@@ -1,0 +1,71 @@
+# NIFTY 50 Stock Symbols for Yahoo Finance
+nifty50_stocks:
+  - RELIANCE.NS
+  - TCS.NS
+  - HDFCBANK.NS
+  - BHARTIARTL.NS
+  - ICICIBANK.NS
+  - SBIN.NS
+  - LICI.NS
+  - ITC.NS
+  - INFY.NS
+  - LT.NS
+  - HCLTECH.NS
+  - MARUTI.NS
+  - KOTAKBANK.NS
+  - TITAN.NS
+  - AXISBANK.NS
+  - NESTLEIND.NS
+  - BAJFINANCE.NS
+  - ULTRACEMCO.NS
+  - ASIANPAINT.NS
+  - WIPRO.NS
+  - ADANIENT.NS
+  - ONGC.NS
+  - NTPC.NS
+  - POWERGRID.NS
+  - COALINDIA.NS
+  - TATAMOTORS.NS
+  - TATASTEEL.NS
+  - HINDALCO.NS
+  - INDUSINDBK.NS
+  - TECHM.NS
+  - JSWSTEEL.NS
+  - GRASIM.NS
+  - DRREDDY.NS
+  - SUNPHARMA.NS
+  - CIPLA.NS
+  - APOLLOHOSP.NS
+  - DIVISLAB.NS
+  - BAJAJFINSV.NS
+  - HEROMOTOCO.NS
+  - EICHERMOT.NS
+  - BRITANNIA.NS
+  - UPL.NS
+  - BPCL.NS
+  - TATACONSUM.NS
+  - SBILIFE.NS
+  - ADANIPORTS.NS
+  - HDFCLIFE.NS
+  - BAJAJ-AUTO.NS
+  - M&M.NS
+  - LTIM.NS
+
+# Stock metadata for better analysis
+stock_metadata:
+  RELIANCE.NS:
+    company_name: "Reliance Industries Limited"
+    sector: "Energy"
+    market_cap_category: "Large Cap"
+  
+  TCS.NS:
+    company_name: "Tata Consultancy Services Limited"
+    sector: "Information Technology"
+    market_cap_category: "Large Cap"
+  
+  HDFCBANK.NS:
+    company_name: "HDFC Bank Limited"
+    sector: "Financial Services"
+    market_cap_category: "Large Cap"
+  
+  # Add more metadata as needed for analysis

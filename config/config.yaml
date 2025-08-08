@@ -1,0 +1,78 @@
+# Trading Configuration
+trading:
+  mode: paper  # paper or live
+  initial_capital: 100000
+  max_position_size: 0.1  # 10% of portfolio per trade
+  stop_loss_percent: 0.05  # 5% stop loss
+  take_profit_percent: 0.10  # 10% take profit
+  commission: 0.001  # 0.1% commission per trade
+
+# Data Configuration
+data:
+  update_interval: 300  # seconds (5 minutes)
+  cache_duration: 3600  # 1 hour cache
+  max_retries: 3
+  timeout: 30
+
+# Strategy Configuration
+strategy:
+  rsi:
+    period: 14
+    buy_threshold: 30
+    sell_threshold: 70
+  moving_average:
+    short_period: 20
+    long_period: 50
+  macd:
+    fast_period: 12
+    slow_period: 26
+    signal_period: 9
+
+# Machine Learning Configuration
+ml:
+  models:
+    - decision_tree
+    - logistic_regression
+  features:
+    - rsi
+    - macd
+    - volume_sma
+    - bb_upper
+    - bb_lower
+    - price_change
+  training:
+    test_size: 0.2
+    cv_folds: 5
+    random_state: 42
+
+# Backtesting Configuration
+backtesting:
+  start_date: "2024-02-01"
+  end_date: "2024-08-01"
+  benchmark: "^NSEI"  # NIFTY 50 index
+
+# Logging Configuration
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/trading.log"
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# Google Sheets Configuration
+google_sheets:
+  sheet_name: "Algo Trading Log"
+  worksheets:
+    trade_log: "Trade Log"
+    summary_pl: "Summary P&L"
+    win_ratio: "Win Ratio"
+    daily_stats: "Daily Stats"
+
+# Telegram Configuration
+telegram:
+  send_signals: true
+  send_errors: true
+  send_daily_summary: true
+  quiet_hours:
+    start: 22  # 10 PM
+    end: 8     # 8 AM

@@ -1,0 +1,150 @@
+# Trading System Configuration
+
+# Stock Selection
+stocks:
+  # NIFTY 50 symbols (sample subset - add more as needed)
+  symbols:
+    - "RELIANCE.NS"
+    - "TCS.NS"
+    - "HDFCBANK.NS"
+    - "INFY.NS"
+    - "ICICIBANK.NS"
+    - "HINDUNILVR.NS"
+    - "SBIN.NS"
+    - "BHARTIARTL.NS"
+    - "ITC.NS"
+    - "KOTAKBANK.NS"
+    - "LT.NS"
+    - "ASIANPAINT.NS"
+    - "MARUTI.NS"
+    - "HCLTECH.NS"
+    - "WIPRO.NS"
+
+# Strategy Configuration
+strategy:
+  name: "RSI_MA_Strategy"
+  
+  # RSI Parameters
+  rsi:
+    period: 14
+    oversold_threshold: 30
+    overbought_threshold: 70
+  
+  # Moving Average Parameters
+  moving_averages:
+    short_period: 20
+    long_period: 50
+  
+  # Risk Management
+  risk_management:
+    max_position_size: 0.05  # 5% of portfolio per position
+    stop_loss_percent: 0.03   # 3% stop loss
+    take_profit_percent: 0.06 # 6% take profit
+    max_portfolio_risk: 0.20  # 20% max portfolio risk
+
+# Machine Learning Configuration
+ml:
+  models:
+    - "decision_tree"
+    - "logistic_regression"
+    - "xgboost"
+  
+  training:
+    test_size: 0.2
+    validation_size: 0.2
+    lookback_days: 60
+    prediction_horizon: 1  # Next day prediction
+    
+  features:
+    technical_indicators: true
+    price_features: true
+    volume_features: true
+    market_features: true
+
+# Data Configuration
+data:
+  source: "yahoo_finance"
+  update_frequency: "1h"  # Update every hour during market hours
+  cache_duration: 300     # Cache data for 5 minutes
+  max_retries: 3
+  request_delay: 1        # Delay between API requests (seconds)
+
+# Backtesting Configuration
+backtesting:
+  initial_capital: 100000.0  # ₹1,00,000
+  commission: 0.001          # 0.1% commission per trade
+  slippage: 0.0005          # 0.05% slippage
+  
+  # Benchmark
+  benchmark_symbol: "^NSEI"  # NIFTY 50 index
+  
+  # Analysis periods
+  periods:
+    backtest_months: 6
+    rolling_window: 30
+    
+# Trading Schedule
+trading:
+  market_hours:
+    start: "09:15"
+    end: "15:30"
+    timezone: "Asia/Kolkata"
+  
+  scan_frequency: "5m"      # Scan for signals every 5 minutes
+  max_trades_per_day: 10
+  
+  # Trading modes
+  modes:
+    live_trading: false     # Set to true for live trading
+    paper_trading: true     # Virtual trading for testing
+    backtest_only: false    # Only run backtests
+
+# Integrations
+integrations:
+  # Google Sheets
+  google_sheets:
+    enabled: true
+    spreadsheet_name: "Algo Trading Log"
+    credentials_file: "config/google_sheets_credentials.json"
+    
+    worksheets:
+      trades: "Trades"
+      daily_summary: "Daily Summary"
+      portfolio: "Portfolio"
+      signals: "Signals"
+  
+  # Telegram Bot
+  telegram:
+    enabled: true
+    bot_token: ""  # Set via environment variable: TELEGRAM_BOT_TOKEN
+    chat_id: ""    # Set via environment variable: TELEGRAM_CHAT_ID
+    
+    alerts:
+      signal_alerts: true
+      trade_alerts: true
+      daily_summary: true
+      error_alerts: true
+    
+    quiet_hours:
+      start: "22:00"
+      end: "08:00"
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  files:
+    main_log: "logs/trading_system.log"
+    trade_log: "logs/trades.log"
+    error_log: "logs/errors.log"
+  
+  rotation:
+    max_size: "10MB"
+    backup_count: 5
+
+# Environment Variables
+# Set these in your environment or .env file:
+# TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+# TELEGRAM_CHAT_ID=your_telegram_chat_id
+# GOOGLE_SHEETS_CREDENTIALS=path_to_credentials_json
